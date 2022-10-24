@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="abc">
+        <h1 id="minutes">0</h1>
+        <h1 id="seconds">0</h1>
+        <h1 id="milisec">0</h1>
+    </div>
+
+    <div>
+        <button id="watch" onclick="strt()">Start</button>
+        <button onclick="staap()">Stop</button>
+        <button onclick="clearall()">Reset</button>
+    </div>
+
+    <script>
+
+var min = 0
+var sec = 0
+var msec = 0
+var a = document.getElementById('minutes')
+var b = document.getElementById('seconds')
+var c = document.getElementById('milisec')
+var interval;
+function strt(){
+    
+  interval =  setInterval(function(){
+        msec++
+        c.innerHTML = msec
+        if(msec >= 100){
+            sec++
+            b.innerHTML = sec
+            msec = 0
+        }
+        else if(sec >=60){
+            min++
+            a.innerHTML = min
+            sec = 0
+        }
+    },10)
+    
+    document.getElementById('watch').disabled = true
+}
+
+function staap(){
+    clearInterval(interval)
+    document.getElementById('watch').disabled = false
+
+}
+
+
+function clearall(){
+    min = 0
+    sec = 0
+    msec = 0
+    a.innerHTML = min
+    b.innerHTML = sec
+    c.innerHTML = msec
+}
+
+
+
+    </script>
+    
+
+
+
+
+</body>
+</html>
